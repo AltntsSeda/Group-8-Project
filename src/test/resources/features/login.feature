@@ -29,4 +29,4 @@ Feature: Users should be able to login
   Scenario: Login as a Sales_manager
     Given the user is on the login page
     When the user enters the Sales_manager information
-    Then the user should be able to logino login
+    Then the user should be able to login
