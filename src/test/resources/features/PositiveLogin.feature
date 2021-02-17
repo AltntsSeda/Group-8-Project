@@ -1,5 +1,10 @@
-@Login
-Feature: Users should be able to login
+@Login @PositiveLogin
+
+Feature: Positive Login
+
+  Agile Story:As a user I should be able to login with valid credentials
+  Description: The purpose of this feature is to test the login functionality
+
 
   @Manufacturing_User
   Scenario: Login as a Manufacturing_User
