@@ -44,8 +44,8 @@ public class LoginStepsDef {
 
     @When("the user enters the Inventory_Manager information")
     public void the_user_enters_the_Inventory_Manager_information() {
-        String username = ConfigurationReader.get("Expenses_Manager_Email");
-        String password = ConfigurationReader.get("Expenses_Manager_password");
+        String username = ConfigurationReader.get("Inventory_Manager_Email");
+        String password = ConfigurationReader.get("Inventory_Manager_password");
 
         LoginPage loginPage = new LoginPage();
         loginPage.login(username,password);

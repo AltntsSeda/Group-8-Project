@@ -1,5 +1,6 @@
 package com.fidexio.step_definitions;
 
+import com.fidexio.utilities.ConfigurationReader;
 import com.fidexio.utilities.Driver;
 import com.fidexio.utilities.Driver;
 import io.cucumber.java.After;
