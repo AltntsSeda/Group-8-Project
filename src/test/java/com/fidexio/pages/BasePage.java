@@ -19,6 +19,9 @@ public abstract class BasePage {
     @FindBy(css = ".oe_topbar_name")
     public WebElement topUsername;
 
+    @FindBy(xpath = "//li[@class='o_user_menu']//img[1]")
+    public WebElement AvataronTheMenu;
+
     @FindBy(css = "span.title-level-1")
     public List<WebElement> menuOptions;
 

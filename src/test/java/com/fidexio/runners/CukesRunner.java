@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/",
         glue = "com/fidexio/step_definitions",
         dryRun =false,
-        tags = "@Dashboard"
+        tags = "@Avatar"
 )
 public class CukesRunner {
 }
