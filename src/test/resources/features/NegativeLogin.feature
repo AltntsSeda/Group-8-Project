@@ -1,12 +1,9 @@
  @NegativeLogin
 Feature: Negative Login
   User Story:Verify that as a user I should not be able to login with invalid credentials
-
   Acceptance Criterias:
   Users should not be able to login with wrong credentials
   Users should not be able to login with blank credentials
-
-
 
   Scenario Outline: Users should not be able to login with wrong credentials
     When the user enter wrong credentials "<Username>" "<Password>"
