@@ -28,6 +28,7 @@ public class AvatarStepDef {
             BrowserUtils.waitFor(2);
             DashboardPage dashboardPage= new DashboardPage();
             Assert.assertTrue(dashboardPage.AvataronTheMenu.isDisplayed());
+
         }
 
 
