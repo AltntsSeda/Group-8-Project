@@ -1,4 +1,4 @@
- @Login @Dashboard @NegativeLogin
+ @NegativeLogin
 Feature: Negative Login
   User Story:Verify that as a user I should not be able to login with invalid credentials
 

@@ -30,6 +30,7 @@ Feature: Positive Login
   Scenario: Login as a Point_of_Sales_Manager
 
     When the user enters the Point_of_Sales_Manager information
+ 
     Then the user should be able to login
 
   @Sales_manager
@@ -37,3 +38,4 @@ Feature: Positive Login
 
     When the user enters the Sales_manager information
     Then the user should be able to login
+
