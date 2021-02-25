@@ -3,24 +3,35 @@ package com.fidexio.pages;
 
 import com.fidexio.utilities.ConfigurationReader;
 import com.fidexio.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
-    public LoginPage(){
+    public LoginPage() {
         PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy(css="#login")
+    @FindBy(css = "#login")
     public WebElement Email;
 
-    @FindBy(xpath="//input[@id='password']")
+
+    @FindBy(xpath = "//input[@id='password']")
     public WebElement password;
 
-    @FindBy(xpath= "//button[contains(text(),'Log in')]")
+    @FindBy(xpath = "//button[contains(text(),'Log in')]")
     public WebElement submit;
+
+    @FindBy(className = "alert")
+    public WebElement wrongMessage;
+
+    @FindBy(id = "login")
+    public WebElement blankUsernameMessage;
+
+    @FindBy(id = "password")
+    public WebElement blankPasswordMessage;
 
     public void login(String userNameStr, String passwordStr) {
         Email.sendKeys(userNameStr);
@@ -29,7 +40,7 @@ public class LoginPage {
         // verification that we logged
     }
 
-    public void loginAsA(String userType){
+    public void loginAsA(String userType) {
 
         String username, password;
 
@@ -45,10 +56,10 @@ public class LoginPage {
             enterCredentials(username, password);
             clickOnLoginButton();
         }
-        if (userType.startsWith("Expenses Manager")){
+        if (userType.startsWith("Expenses Manager")) {
             username = ConfigurationReader.get("expensesManagerUsername");
             password = ConfigurationReader.get("expensesManagerPassword");
-            enterCredentials(username,password);
+            enterCredentials(username, password);
             clickOnLoginButton();
         }
         if (userType.startsWith("Inventory Manager")) {
@@ -65,13 +76,26 @@ public class LoginPage {
         }
     }
 
-    public void enterCredentials(String usernameStr,String passwordStr){
+    public void enterCredentials(String usernameStr, String passwordStr) {
         Email.sendKeys(usernameStr);
         password.sendKeys(passwordStr);
     }
 
-    public void clickOnLoginButton(){
+    public void clickOnLoginButton() {
         submit.click();
     }
 
+
+    public void verifyWrongMessage(String expectedMessage) {
+        Assert.assertEquals(expectedMessage, wrongMessage.getText());
+    }
+
+    public void verifyBlankMessage(String expectedMessage, String username, String password) {
+        if (username.contains("-")) {
+            Assert.assertEquals(expectedMessage, blankUsernameMessage.getAttribute("validationMessage"));
+        }
+        if (password.contains("-")) {
+            Assert.assertEquals(expectedMessage, blankPasswordMessage.getAttribute("validationMessage"));
+        }
+    }
 }
