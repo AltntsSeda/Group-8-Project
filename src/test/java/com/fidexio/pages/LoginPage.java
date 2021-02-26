@@ -52,8 +52,8 @@ public class LoginPage {
             clickOnLoginButton();
         }
         if (userType.startsWith("Inventory Manager")) {
-            username = ConfigurationReader.get("inventoryManagerUsername");
-            password = ConfigurationReader.get("inventoryManagerPassword");
+            username = ConfigurationReader.get("Inventory_Manager_Email");
+            password = ConfigurationReader.get("Inventory_Manager_password");
             enterCredentials(username, password);
             clickOnLoginButton();
         }
