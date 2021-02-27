@@ -9,7 +9,7 @@ import org.junit.Assert;
 import java.util.List;
 
 public class UserModulesLinksStepsDefs {
-    //a new branch is created
+    //new branch is created
 
     @Given("the user logged in as {string}")
     public void the_user_logged_in_as(String userModules) {
