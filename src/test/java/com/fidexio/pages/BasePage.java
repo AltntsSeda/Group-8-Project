@@ -2,6 +2,7 @@ package com.fidexio.pages;
 
 import com.fidexio.utilities.BrowserUtils;
 import com.fidexio.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,29 +28,35 @@ public abstract class BasePage {
 
     public List<WebElement> menuOptions;
 
+    @FindBy(xpath = "//*[@title='Activities']")
+    public WebElement activities;
 
-    @FindBy(xpath = "//li[@id='menu_more_container']/a")
-    public WebElement menuMoreContainer;
+    public void verifyActivitiesIsDisplayed() {
+        Assert.assertTrue(activities.isDisplayed());
 
-    @FindBy(xpath = "//div[@class='o_loading']")
-    public WebElement screenLoader;
+    }
+        @FindBy(xpath = "//li[@id='menu_more_container']/a")
+        public WebElement menuMoreContainer;
 
-    public void navigateTo(String tab) {
-        String tabLoc = "//nav[@id='oe_main_menu_navbar']/div/ul//li/a/span[contains(text(),'"+tab+"')]";
-        WebElement module = Driver.get().findElement(By.xpath(tabLoc));
-        if(!module.isDisplayed()){
-            menuMoreContainer.click();
-            BrowserUtils.waitFor(1);
+        @FindBy(xpath = "//div[@class='o_loading']")
+        public WebElement screenLoader;
+
+        public void navigateTo (String tab){
+            String tabLoc = "//nav[@id='oe_main_menu_navbar']/div/ul//li/a/span[contains(text(),'" + tab + "')]";
+            WebElement module = Driver.get().findElement(By.xpath(tabLoc));
+            if (!module.isDisplayed()) {
+                menuMoreContainer.click();
+                BrowserUtils.waitFor(1);
+            }
+            module.click();
         }
-        module.click();
-    }
 
-    public void waitUntilScreenLoaderDisappear(){
-        new WebDriverWait(Driver.get(),10).until(ExpectedConditions.visibilityOf(screenLoader));
-        new WebDriverWait(Driver.get(),10).until(ExpectedConditions.invisibilityOf(screenLoader));
-    }
+        public void waitUntilScreenLoaderDisappear () {
+            new WebDriverWait(Driver.get(), 10).until(ExpectedConditions.visibilityOf(screenLoader));
+            new WebDriverWait(Driver.get(), 10).until(ExpectedConditions.invisibilityOf(screenLoader));
+        }
 
-}
+    }
 
 
 
