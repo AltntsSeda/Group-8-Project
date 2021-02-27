@@ -11,7 +11,7 @@ import org.junit.Assert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class DashboardStepDefSüm {
+public class LinkFunctionalityStepDef {
     @When("the user navigate to {string}")
     public void the_user_navigate_to(String module) {
 
