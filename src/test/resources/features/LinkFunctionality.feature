@@ -1,5 +1,5 @@
 Feature: Module Links Functionality Süm
-  Agile story: Users should be able to go all modules they have right to access via links on the top menu
+  Agile story; Users should be able to go all modules they have right to access via links on the top menu
   Description: Tests that the user can access all modules with access right through the links in the top menu.
 
   @tag
