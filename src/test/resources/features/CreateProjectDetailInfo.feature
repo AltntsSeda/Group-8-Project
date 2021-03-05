@@ -7,7 +7,7 @@
 
 		Background: Login with valid credentials
 
-		    When the user enter valid credentials "posmanager16@info.com" "posmanager"
+		    When the user enter valid credentials "posmanager10@info.com" "posmanager"
 		    And click on login button
 			And go to "Project" Module
 		    
