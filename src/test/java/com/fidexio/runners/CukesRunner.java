@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
                 "html:target/default-html-reports", "rerun:target/rerun.txt"},
         features = "src/test/resources/features/",
         glue = "com/fidexio/step_definitions",
-        dryRun =false,
-        tags = "@Dashboard"
+        dryRun =true,
+        tags = "@FID-206"
 
 )
 public class CukesRunner {
