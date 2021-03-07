@@ -2,10 +2,9 @@ package com.fidexio.pages;
 
 import com.fidexio.utilities.BrowserUtils;
 import com.fidexio.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,107 +14,73 @@ import java.util.List;
 
 public abstract class BasePage {
 
-
-    @FindBy(css = ".oe_topbar_name")
-    public WebElement topUsername;
-
-    @FindBy(css = "span.title-level-1")
-    public List<WebElement> menuOptions;
-
-    @FindBy(css = "div[class='loader-mask shown']")
-    @CacheLookup
-    protected WebElement loaderMask;
-
-    @FindBy(css = "h1[class='oro-subtitle']")
-    public WebElement pageSubTitle;
-
-    @FindBy(css = "#user-menu > a")
-    public WebElement userName;
-
-    @FindBy(linkText = "Logout")
-    public WebElement logOutLink;
-
-    @FindBy(linkText = "My User")
-    public WebElement myUser;
-
     public BasePage() {
         PageFactory.initElements(Driver.get(), this);
     }
 
+    @FindBy(css = ".oe_topbar_name")
+    public WebElement topUsername;
 
-    /**
-     * @return page name, for example: Dashboard
-     */
-    public String getPageSubTitle() {
-        //ant time we are verifying page name, or page subtitle, loader mask appears
-        waitUntilLoaderScreenDisappear();
-//        BrowserUtils.waitForStaleElement(pageSubTitle);
-        return pageSubTitle.getText();
+    @FindBy(xpath = "//li[@class='o_user_menu']//img[1]")
+    public WebElement AvataronTheMenu;
+
+    @FindBy(css = "span.title-level-1")
+
+    public List<WebElement> menuOptions;
+
+    @FindBy(xpath = "//*[@title='Activities']")
+    public WebElement activities;
+
+    public void verifyActivitiesIsDisplayed() {
+        Assert.assertTrue(activities.isDisplayed());
+
     }
+        @FindBy(xpath = "//li[@id='menu_more_container']/a")
+        public WebElement menuMoreContainer;
 
+        @FindBy(xpath = "//div[@class='o_loading']")
+        public WebElement screenLoader;
 
-    /**
-     * Waits until loader screen present. If loader screen will not pop up at all,
-     * NoSuchElementException will be handled  bu try/catch block
-     * Thus, we can continue in any case.
-     */
-    public void waitUntilLoaderScreenDisappear() {
-        try {
-            WebDriverWait wait = new WebDriverWait(Driver.get(), 5);
-            wait.until(ExpectedConditions.invisibilityOf(loaderMask));
-        } catch (Exception e) {
-            e.printStackTrace();
+        public void navigateTo (String tab){
+            String tabLoc = "//nav[@id='oe_main_menu_navbar']/div/ul//li/a/span[contains(text(),'" + tab + "')]";
+            WebElement module = Driver.get().findElement(By.xpath(tabLoc));
+            if (!module.isDisplayed()) {
+                menuMoreContainer.click();
+                BrowserUtils.waitFor(1);
+            }
+            module.click();
+        }
+
+        public void waitUntilScreenLoaderDisappear () {
+            new WebDriverWait(Driver.get(), 10).until(ExpectedConditions.visibilityOf(screenLoader));
+            new WebDriverWait(Driver.get(), 10).until(ExpectedConditions.invisibilityOf(screenLoader));
         }
 
     }
 
-    public String getUserName(){
-        waitUntilLoaderScreenDisappear();
-        BrowserUtils.waitForVisibility(userName, 5);
-        return userName.getText();
-    }
 
 
 
-    public void logOut(){
-        BrowserUtils.waitFor(2);
-        BrowserUtils.clickWithJS(userName);
-        BrowserUtils.clickWithJS(logOutLink);
-    }
-    public void goToMyUser(){
-        waitUntilLoaderScreenDisappear();
-        BrowserUtils.waitForClickablility(userName, 5).click();
-        BrowserUtils.waitForClickablility(myUser, 5).click();
 
-    }
 
-    /**
-     * This method will navigate user to the specific module in vytrack application.
-     * For example: if tab is equals to Activities, and module equals to Calls,
-     * Then method will navigate user to this page: http://qa2.vytrack.com/call/
-     *
-     * @param tab
-     * @param module
-     */
-    public void navigateToModule(String tab, String module) {
-        String tabLocator = "//span[normalize-space()='" + tab + "' and contains(@class, 'title title-level-1')]";
-        String moduleLocator = "//span[normalize-space()='" + module + "' and contains(@class, 'title title-level-2')]";
-        try {
-            BrowserUtils.waitForClickablility(By.xpath(tabLocator), 5);
-            WebElement tabElement = Driver.get().findElement(By.xpath(tabLocator));
-            new Actions(Driver.get()).moveToElement(tabElement).pause(200).doubleClick(tabElement).build().perform();
-        } catch (Exception e) {
-            BrowserUtils.clickWithWait(By.xpath(tabLocator), 5);
-        }
-        try {
-            BrowserUtils.waitForPresenceOfElement(By.xpath(moduleLocator), 5);
-            BrowserUtils.waitForVisibility(By.xpath(moduleLocator), 5);
-            BrowserUtils.scrollToElement(Driver.get().findElement(By.xpath(moduleLocator)));
-            Driver.get().findElement(By.xpath(moduleLocator)).click();
-        } catch (Exception e) {
-//            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
-            BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)),  5);
-        }
-    }
 
-}
+
+
+    /*discuss xpath="//a[@*='115']"
+    caledar xpyth= "//a[@*='136']"
+    notes = xpath ="//a[@*='220']"
+     contacts ="//a[@*='68']"
+website= "//a[@*='382']"
+iventory="//a[@*='347']"
+manufactoring="//a[@*='415']"
+more="//li[@*='menu_more_container']"
+more dropdown toggle="//b[@*='caret']"
+repairs="//a[@*='723']"
+invoicing="//a[@*='199']"
+timesheets="//a[@*='404']"
+employees="//a[@*='157']"
+leaves="//a[@*='295']"
+expenses="//a[@*='388']"
+lunch=" //a[@*='49']"
+meintenance="//a[@*='165']"
+dashboard="//a[@*='1']" */
