@@ -29,16 +29,7 @@ public class ProjectPage extends BasePage{
 
     @FindBy(xpath = "(//div[@class='o_input_dropdown'])[4]")
     public WebElement customerDropdown;
-
-   /* @FindBy(xpath = "//a[.='Create and Edit...']")
-    public WebElement customerDropDownCreateEdit;
-
-    @FindBy(xpath = "(//input[@class='o_field_char o_field_widget o_input o_required_modifier'])[2]")
-    public WebElement CustomerNameOnCreateCustomer;
-
-    @FindBy(xpath = "//button[@class='btn btn-sm btn-primary']")
-    public WebElement saveButtonOnCreateCustomer;
-*/
+  
 
     @FindBy(xpath="//button[@class='btn btn-primary btn-sm o_form_button_save']")
     public WebElement saveButtonOnProjectsPage;
