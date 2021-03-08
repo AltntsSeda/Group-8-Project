@@ -42,7 +42,7 @@ public abstract class BasePage {
         public WebElement screenLoader;
 
         public void navigateTo (String tab){
-            String tabLoc = "//nav[@id='oe_main_menu_navbar']/div/ul//li/a/span[contains(text(),'" + tab + "')]";
+            String tabLoc = "//span[normalize-space()='" + tab + "' and contains(@class, 'oe_menu_text')]";
             WebElement module = Driver.get().findElement(By.xpath(tabLoc));
             if (!module.isDisplayed()) {
                 menuMoreContainer.click();
