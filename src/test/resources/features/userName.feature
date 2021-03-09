@@ -9,7 +9,7 @@ Feature: Username Functionality
     Examples:
       | Email                      | Password         | UsernameonTheMenu   |
       | salesmanager15@info.com    | salesmanager     | SalesManager15      |
-      | posmanager10@info.com      | posmanager       | POSManager10        |
+      | posmanager16@info.com      | posmanager       | POSManager16        |
       | imm10@info.com             | inventorymanager | InventoryManager10  |
       | expensesmanager10@info.com | expensesmanager  | ExpensesManager10   |
       | manuf_user10@info.com      | manufuser        | ManufacturingUser10 |
