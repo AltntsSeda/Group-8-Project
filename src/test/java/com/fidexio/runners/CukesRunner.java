@@ -14,8 +14,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/",
         glue = "com/fidexio/step_definitions",
         dryRun =false,
-        tags = "@FID-202"
-
+        tags = "@FID-198"
 )
 public class CukesRunner {
 

@@ -40,6 +40,16 @@ public class ProjectPage extends BasePage{
     @FindBy(xpath = "//div[@class='o_primary']/span[1]")
     public WebElement projectName;
 
+    @FindBy(xpath = "//a[@href='/web#menu_id=333&action=']/span[@class='oe_menu_text']")
+    public WebElement projectButton;
+
+   @FindBy (xpath = "//input[@class='o_searchview_input']")
+   public WebElement searchProjectBox;
+   @FindBy (xpath = "//span[.='E-Learning Integration']")
+   public WebElement ProjectE_Learning_Integration;
+
+
+
 
 
     public void selectACustomerFromCustomerDropdown(String customerName) {
