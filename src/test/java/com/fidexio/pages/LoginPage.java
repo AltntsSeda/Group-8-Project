@@ -45,20 +45,20 @@ public class LoginPage extends BasePage {
         String username, password;
 
         if (userType.startsWith("POS Manager")) {
-            username = ConfigurationReader.get("posManagerUsername");
-            password = ConfigurationReader.get("posManagerPassword");
+            username = ConfigurationReader.get("Point_of_Sales_Manager_Email");
+            password = ConfigurationReader.get("Point_of_Sales_Manager_password");
             enterCredentials(username, password);
             clickOnLoginButton();
         }
         if (userType.startsWith("Sales Manager")) {
-            username = ConfigurationReader.get("salesManagerUsername");
-            password = ConfigurationReader.get("salesManagerPassword");
+            username = ConfigurationReader.get("Sales_manager_Email");
+            password = ConfigurationReader.get("Sales_manager_password");
             enterCredentials(username, password);
             clickOnLoginButton();
         }
         if (userType.startsWith("Expenses Manager")) {
-            username = ConfigurationReader.get("expensesManagerUsername");
-            password = ConfigurationReader.get("expensesManagerPassword");
+            username = ConfigurationReader.get("Expenses_Manager_Email");
+            password = ConfigurationReader.get("Expenses_Manager_password");
             enterCredentials(username, password);
             clickOnLoginButton();
         }
@@ -69,8 +69,8 @@ public class LoginPage extends BasePage {
             clickOnLoginButton();
         }
         if (userType.startsWith("Manufacturing User")) {
-            username = ConfigurationReader.get("manufacturerUserUsername");
-            password = ConfigurationReader.get("manufacturerUserPassword");
+            username = ConfigurationReader.get("Manufacturing_User_Email");
+            password = ConfigurationReader.get("Manufacturing_User_password");
             enterCredentials(username, password);
             clickOnLoginButton();
         }
