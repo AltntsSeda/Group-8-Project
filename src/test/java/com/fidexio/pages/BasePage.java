@@ -36,11 +36,12 @@ public abstract class BasePage {
         Assert.assertTrue(activities.isDisplayed());
 
     }
-        @FindBy(xpath = "//li[@id='menu_more_container']/a")
-        public WebElement menuMoreContainer;
 
-        @FindBy(xpath = "//div[@class='o_loading']")
-        public WebElement screenLoader;
+    @FindBy(xpath = "//li[@id='menu_more_container']/a")
+    public WebElement menuMoreContainer;
+
+    @FindBy(xpath = "//div[@class='o_loading']")
+    public WebElement screenLoader;
 
     @FindBy(xpath = "//h1[contains(text(),'Odoo User Documentation')]")
     public WebElement documentationPageLocator;
@@ -56,33 +57,40 @@ public abstract class BasePage {
 
     @FindBy(xpath = "//button[contains(text(),'Log in')]")
     public WebElement loginPageLocator;
+   public WebElement GetuserMenuOption(String option){
+      return Driver.get().findElement(By.xpath("//ul[@class='dropdown-menu'][@role='menu']/li/a[.='"+option+"']"));
+   }
+   public WebElement getAvatarOption(String option){
+       return Driver.get().findElement(By.xpath("//div[@class='o_form_image_controls']/span[@title='"+option+"']"));
+   }
 
-        public void navigateTo (String tab){
-            String tabLoc = "//span[normalize-space()='" + tab + "' and contains(@class, 'oe_menu_text')]";
-            WebElement module = Driver.get().findElement(By.xpath(tabLoc));
-            if (!module.isDisplayed()) {
-                menuMoreContainer.click();
-                BrowserUtils.waitFor(1);
-            }
-            module.click();
+    public void navigateTo(String tab) {
+        String tabLoc = "//span[normalize-space()='" + tab + "' and contains(@class, 'oe_menu_text')]";
+        WebElement module = Driver.get().findElement(By.xpath(tabLoc));
+        if (!module.isDisplayed()) {
+            menuMoreContainer.click();
+            BrowserUtils.waitFor(1);
         }
+        module.click();
+    }
 
-        public void waitUntilScreenLoaderDisappear () {
-            new WebDriverWait(Driver.get(), 10).until(ExpectedConditions.visibilityOf(screenLoader));
-            new WebDriverWait(Driver.get(), 10).until(ExpectedConditions.invisibilityOf(screenLoader));
-        }
-    public void clickOnTheUsername(){
+    public void waitUntilScreenLoaderDisappear() {
+        new WebDriverWait(Driver.get(), 10).until(ExpectedConditions.visibilityOf(screenLoader));
+        new WebDriverWait(Driver.get(), 10).until(ExpectedConditions.invisibilityOf(screenLoader));
+    }
+
+    public void clickOnTheUsername() {
         BrowserUtils.waitFor(3);
         topUsername.click();
     }
 
-    public void clickOnTheDropdownItem(String dropdownItem){
+    public void clickOnTheDropdownItem(String dropdownItem) {
         BrowserUtils.waitFor(1);
         String locator = "//a[contains(text(),'" + dropdownItem + "')]";
         Driver.get().findElement(By.xpath(locator)).click();
     }
 
-    public void verifyYouAreOnTheRelatedPage(String dropdownItem){
+    public void verifyYouAreOnTheRelatedPage(String dropdownItem) {
         BrowserUtils.waitFor(1);
         if (dropdownItem.contains("Documentation")) {
             swtichToTheNewPage();
@@ -105,7 +113,7 @@ public abstract class BasePage {
         }
     }
 
-    public void swtichToTheNewPage(){
+    public void swtichToTheNewPage() {
         BrowserUtils.waitFor(1);
         String currentWindowHandle = Driver.get().getWindowHandle();
         Set<String> windowHandles = Driver.get().getWindowHandles();
