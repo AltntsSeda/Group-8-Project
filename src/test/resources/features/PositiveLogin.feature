@@ -16,3 +16,8 @@ Feature: Positive Login
       | Inventory_Manager      |
       | Point_of_Sales_Manager |
       | Sales_manager          |
+
+  @POSManagerLogin
+  Scenario: Users should be able to login with valid credentials
+    When the user enter valid credentials "posmanager16@info.com" "posmanager"
+    Then the user should be able to login

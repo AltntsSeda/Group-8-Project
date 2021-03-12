@@ -4,6 +4,7 @@ import com.fidexio.pages.BasePage;
 import com.fidexio.pages.DashboardPage;
 import com.fidexio.pages.LoginPage;
 import com.fidexio.utilities.BrowserUtils;
+import com.fidexio.utilities.ConfigurationReader;
 import com.fidexio.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LinkFunctionalityStepDef {
+
     @When("the user navigate to {string}")
     public void the_user_navigate_to(String module) {
 

@@ -14,13 +14,22 @@ public class LoginStepsDef {
 
     LoginPage loginPage = new LoginPage();
 
+    @When("the user enter valid credentials {string} {string}")
+    public void enter_valid_credentials(String email, String password) {
+        Driver.get().get(ConfigurationReader.get("url"));
+
+        new LoginPage().login(email, password);
+    }
+
     @When("the user enters the {string} information")
     public void theUserEntersTheInformation(String userType) {
+
         loginPage.loginAsA(userType);
     }
 
     @And("the user should be able to login")
     public void the_user_should_be_able_to_login() {
+
         BrowserUtils.waitFor(3);
     }
 

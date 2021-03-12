@@ -12,6 +12,4 @@ Feature: Username Dropdown Functionality
       | Dropdown Item       |
       | Documentation       |
       | Support             |
-      | Preferences         |
       | My Odoo.com account |
-      | Log out             |
