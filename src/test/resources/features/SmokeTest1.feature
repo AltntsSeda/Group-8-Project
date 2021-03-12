@@ -1,4 +1,4 @@
-@Smoke
+@FID-236
 
 Feature:Smoke Test
 
