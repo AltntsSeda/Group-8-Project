@@ -19,12 +19,6 @@ public class UserNameStepsDefs {
 
    DashboardPage dashboardPage = new DashboardPage();
 
-   @When("the user enter valid credentials {string} {string}")
-   public void enter_valid_credentials(String email, String password) {
-      Driver.get().get(ConfigurationReader.get("url"));
-
-      new LoginPage().login(email, password);
-   }
 
    @Then("the user should be able to login see their {string} on the top menu")
    public void username_on_the_top_menu(String usernameTop) {
