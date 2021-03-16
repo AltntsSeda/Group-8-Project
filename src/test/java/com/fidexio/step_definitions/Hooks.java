@@ -2,7 +2,6 @@ package com.fidexio.step_definitions;
 
 import com.fidexio.utilities.ConfigurationReader;
 import com.fidexio.utilities.Driver;
-import com.fidexio.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -19,6 +18,8 @@ public class Hooks {
         Driver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Driver.get().manage().window().maximize();
         Driver.get().get(ConfigurationReader.get("url"));
+        System.out.println("\tthis is coming from BEFORE");
+
     }
 
     @After

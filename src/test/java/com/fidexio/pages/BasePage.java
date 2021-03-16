@@ -60,6 +60,11 @@ public abstract class BasePage {
    public WebElement GetuserMenuOption(String option){
       return Driver.get().findElement(By.xpath("//ul[@class='dropdown-menu'][@role='menu']/li/a[.='"+option+"']"));
    }
+   @FindBy(xpath ="(//input[@type='file'])[3]")
+   public WebElement EditButton;
+   @FindBy(xpath ="//button[@name= 'preference_save']")
+   public WebElement saveButton;
+
    public WebElement getAvatarOption(String option){
        return Driver.get().findElement(By.xpath("//div[@class='o_form_image_controls']/span[@title='"+option+"']"));
    }
