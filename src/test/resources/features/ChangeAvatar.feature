@@ -13,6 +13,7 @@ Feature: Change Avatar
     Then click on the username on the basepage
     And the user click "Preferences" button on the UserMenu
     And the user able to click edit sign
+    And the user able to click Save button
 
 
 
